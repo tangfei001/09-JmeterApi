@@ -1,0 +1,76 @@
+1.断言的讲解
+2.ant环境的搭建
+3.build.xml文件的编写
+
+
+
+
+
+断言：
+1.响应断言
+2.基于json
+
+
+
+接口：
+1.协议状态码的验证  200ok
+2.业务状态码  OK
+3.数据的验证  OK
+
+测试报告步骤：
+1. 搭建ant环境(path的环境变量)
+   cmd的命令提示符输入ant or ant -v 
+2、jmerer的目录C:\apache-jmeter-4.0\extras下找到ant-jmeter-1.1.1.jar,把它copy到ant的apache-ant-1.10.0\lib下
+3、打开jmeter的bin目录下的jmeter.properties文件，做如下修改:
+   把jmeter.save.saveservice.output_format=csv
+   修改为jmeter.save.saveservice.output_format=xml
+   
+4、编写build.xml文件
+   A.执行测试脚本
+   B.生成测试报告(html)
+   C.自动发送邮件
+5、执行,执行命令：
+   cd C:\apache-jmeter-4.0\TestSuite
+   c:
+   ant 
+
+
+emailName:wuya1303@sina.com
+emailPasswd:admin123
+
+自动发送邮件问题总结：
+1、自动发送邮件，需要三个jar，分别是：activation.jar,
+commons-email-1.2.jar,mail.jar,这三个文件放在ant的lib目录下  
+2、Exception reading response timeout stack  jire-->JRE
+3、auhtoration,401,403
+-------------------------------------------------------------------------------------------------------------
+
+Jmerer加到环境变量的步骤：
+1.创建JMETER_HOME,加C:\apache-jmeter-4.0
+2.CLASSPATH里面加:
+CLASSPATH=%JMETER_HOME%\lib\ext\ApacheJMeter_core.jar; %JMETER_HOME%\lib\jorphan.jar;  
+3.path环境变量里面加:
+  %JMETER_HOME%/bin;
+4.jmeter测试
+
+
+
+Jmeter生成性能测试报告
+1.修改配置文件jmeter.properties(或者不需要修改，直接是默认的)
+  jmeter.save.saveservice.output_format=csv
+2.到脚本目录下，直接执行
+  cd C:\apache-jmeter-4.0\TestSuite\script
+  jmeter -n -t HTTP请求.jmx -l test.jtl -e -o c:/result
+  
+模板的定制：
+C:\apache-jmeter-4.0\bin\report-template
+
+permon插件的应用：
+1.下载permon的插件
+2.下载ServerAgent-2.2.1,并且解压
+3.监听器中添加permon
+4.启动serverAgent的插件,监听端口的4444
+5.点击默认点击localhost(也就是本机)
+
+  
+
